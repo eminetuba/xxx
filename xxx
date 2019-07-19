@@ -1,0 +1,118 @@
+#sayi tahmin oyunu
+
+print("sayi tahmin oyunu")
+sayi="1961"
+sayi=list(sayi)
+yerdegeri = 0
+siralamadegeri = 0
+
+while True:
+    tahmin=input("lutfen 4 basamakli bir sayi giriniz.")
+    tahmin = list(str(tahmin))
+    for i in sayi:
+        for k in tahmin:
+            if i==k:
+                siralamadegeri+=1
+                if sayi.index(i)==tahmin.index(k):
+                    yerdegeri+=1
+    print("dogru rakam sayisi {},dogru rakam yeri sayisi: {}".format(siralamadegeri,yerdegeri))
+
+
+# İki liste tanımlayın.
+# İlk liste 1'den 10'a kadar sayılardan oluşturun.
+# İkinci listeyi sırasıyla a'dan başlayarak 10 harf ile oluşturun.
+# İki liste için de döngü kurup, iki listenin elemanlarının bütün kombinasyonlarından oluşan iki yeni liste oluşturun.
+
+# 3'er elemanli versiyonunda cıktı olarak bu şekilde bir çıktı beklenmektedir:
+
+# 1. [1a, 1b, 1c, 2a, 2b, 2c, 3a, 3b, 3c]
+# 2. [a1, a2, a3, b1, b2, b3, c1, c2, c3]
+sayilar=['1','2','3','4','5','6','7','8','9','10']
+harfler=['k','b','c','d','e','f','g','h','i','j']
+liste1=[s+h for s in sayilar for h in harfler]
+liste2=[s+h for h in harfler for s in sayilar]
+
+print("1: (uretecli)",liste1)
+print("2: (uretecli)",liste2)
+
+
+
+
+#adam asmaca
+resim = [ """
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+--------""", """
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+--------""", """
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+--------""", """
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+--------""", """
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+--------""", """
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+--------"""]
+bulunacak_kelime = "tefani"       #kelimem
+kelime_karakteri = ""   #kelimedeki her karakteri "" ile değiştirmek için kullanılacak
+for i in bulunacak_kelime:              #kelimedeki her harf için
+   kelime_karakteri += "-" #değişkene bir "-"ekledm
+print (kelime_karakteri)  #kelimem kaç karakter gost.
+tahminedilen_harfler = []         #tahmin edilen harfler için liste
+for j in range(6):          #6 kelime tahmin hakkı
+    yeni_kelime = "_"            #tahmin edilen harf için alt tire belirli olmasi icin
+    secim = input("kelıme mı? harf Mi?: K or H ") # tahmin için bir harf mi kelime mi
+    print("{}.tahmınde bulunacaksınız.".format(j+1))
+    if secim == "k":
+       tahmin = input("kelıme tahmını gırın: ")
+       if tahmin == bulunacak_kelime:   #tahmin edilen kelime belirlediğimiz kelimeye eşitse
+           print ("tebrikler kazandiniz...")     #döngü sonlandır
+           break
+       else:
+
+           tahminedilen_harfler.append(tahmin) #değilse tahmin edilen kelimeyi ekle
+           print ("yanlıs tahmin ")
+    else:
+       harf = input("bir harf gırın: ")
+       if harf.isnumeric()==False:
+           tahminedilen_harfler.append(harf)    #kelime tahminini listeye ekle
+           for k in bulunacak_kelime:                  #kelimedeki her harf için
+               if k in tahminedilen_harfler:      #eğer harf liste içindeyse
+                   yeni_kelime += k            #değişkene harf ekle
+               else:                       #değilse
+                   yeni_kelime += " _ "        #harfi temsili icin alt tire
+           print(resim[j])
+           print (yeni_kelime)
+       else:
+           print("lutfen harf giriniz.")
+print (tahminedilen_harfler)
+
